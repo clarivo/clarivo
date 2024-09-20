@@ -1,5 +1,4 @@
 CREATE TABLE `account` (
-	`id` text,
 	`userId` text NOT NULL,
 	`type` text NOT NULL,
 	`provider` text NOT NULL,
@@ -11,7 +10,7 @@ CREATE TABLE `account` (
 	`scope` text,
 	`id_token` text,
 	`session_state` text,
-	PRIMARY KEY(`id`, `provider`, `providerAccountId`),
+	PRIMARY KEY(`provider`, `providerAccountId`),
 	FOREIGN KEY (`userId`) REFERENCES `user`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -25,9 +24,7 @@ CREATE TABLE `session` (
 CREATE TABLE `user` (
 	`id` text PRIMARY KEY NOT NULL,
 	`name` text,
-	`email` text,
+	`email` text NOT NULL,
 	`emailVerified` integer,
 	`image` text
 );
---> statement-breakpoint
-CREATE UNIQUE INDEX `user_email_unique` ON `user` (`email`);
