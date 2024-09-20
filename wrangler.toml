@@ -3,9 +3,10 @@ compatibility_date = "2024-03-20"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# Move d1_databases configuration under env.production
-[[env.production.d1_databases]]
+
+
+[[d1_databases]]
 binding = "DB"
 database_name = "clarivo"
 database_id = "77128b4f-a22c-4b7b-a2bc-09a5e80b6626"
-migrations_dir = "lib/drizzle"
+migrations_dir = "lib/drizzle/migrations"  

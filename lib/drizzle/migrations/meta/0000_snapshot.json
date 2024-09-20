@@ -1,19 +1,12 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "1da11e49-3795-4198-902d-1ae1554d0a2e",
+  "id": "3cde1c9d-3533-4bab-baf5-bce0aa1331cf",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account": {
       "name": "account",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
         "userId": {
           "name": "userId",
           "type": "text",
@@ -109,13 +102,12 @@
         }
       },
       "compositePrimaryKeys": {
-        "account_id_provider_providerAccountId_pk": {
+        "account_provider_providerAccountId_pk": {
           "columns": [
-            "id",
             "provider",
             "providerAccountId"
           ],
-          "name": "account_id_provider_providerAccountId_pk"
+          "name": "account_provider_providerAccountId_pk"
         }
       },
       "uniqueConstraints": {}
@@ -185,7 +177,7 @@
           "name": "email",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "emailVerified": {
@@ -203,15 +195,7 @@
           "autoincrement": false
         }
       },
-      "indexes": {
-        "user_email_unique": {
-          "name": "user_email_unique",
-          "columns": [
-            "email"
-          ],
-          "isUnique": true
-        }
-      },
+      "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
