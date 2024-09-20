@@ -17,6 +17,7 @@ export const {
 		signOut: "/",
 		error: "/login",
 	},
+	debug: true, 
 	providers: [
 		Google({
 			clientId: process.env.AUTH_GOOGLE_ID,
