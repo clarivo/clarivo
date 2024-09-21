@@ -3,29 +3,31 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import { db } from "./lib/drizzle/db";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const {
-	handlers: { GET, POST },
-	signIn,
-	signOut,
-	auth,
+  handlers: { GET, POST },
+  signIn,
+  signOut,
+  auth,
 } = NextAuth({
-	secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
-	adapter: DrizzleAdapter(db),
-	pages: {
-		signIn: "/login",
-		signOut: "/",
-		error: "/login",
-	},
-	debug: true, 
-	providers: [
-		Google({
-			clientId: process.env.AUTH_GOOGLE_ID,
-			clientSecret: process.env.AUTH_GOOGLE_SECRET,
-		}),
-		Github({
-			clientId: process.env.GITHUB_ID,
-			clientSecret: process.env.GITHUB_SECRET,
-		}),
-	],
+  secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
+  adapter: DrizzleAdapter(db),
+  pages: {
+    signIn: "/login",
+    signOut: "/",
+    error: "/login",
+  },
+  debug: true,
+  providers: [
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+    }),
+    Github({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+  ],
 });
