@@ -52,9 +52,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           className="cursor-pointer"
           onSelect={(event) => {
             event.preventDefault()
-            signOut({
-              callbackUrl: "/login",
-            })
+            signOut()
           }}
         >
           Sign out
