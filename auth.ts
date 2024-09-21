@@ -3,8 +3,6 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import { db } from "./lib/drizzle/db";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const {
   handlers: { GET, POST },
